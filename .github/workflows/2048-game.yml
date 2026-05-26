@@ -1,6 +1,6 @@
 name: Build, Push and Deploy Docker Image
 run-name: Build, Push and Deploy Image
-on: 
+on:
   push:
     branches:
       - main
@@ -25,13 +25,13 @@ jobs:
       - name: Push Image
         run: docker push $IMAGE_NAME
 
-  deploy-2048:
+deploy-2048:
     needs: build-push-image
     runs-on: self-hosted
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: stop and remove existing container
-        run: docker compose down --rmi all
+        run: docker-compose down --rmi all
       - name: start container
-        run: docker compose up -d
+        run: docker-compose up -d
