@@ -25,7 +25,7 @@ jobs:
       - name: Push Image
         run: docker push $IMAGE_NAME
 
-deploy-2048:
+  deploy-2048:
     needs: build-push-image
     runs-on: self-hosted
     steps:
